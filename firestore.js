@@ -23,8 +23,7 @@ document.getElementById('dbText').innerText = "Hot dog status:"
 //const docRef = firestore.collection("samples").doc("sandwichData");
 const docRef = firestore.doc("samples/sandwichdata");
 
-// when the user clicks the button, saves the new sandwich data to firestore
-
+// saves the new sandwich data to firestore
 saveButton.addEventListener("click", function() {
     const saveTxt = inputText.value;
     console.log("You typed " + saveTxt);    
@@ -36,6 +35,7 @@ saveButton.addEventListener("click", function() {
     });
 });
 
+// explicitly looks for new sandwich data in the db
 loadButton.addEventListener("click", function() {
     const saveTxt = inputText.value;
     docRef.get().then(function(doc) {
@@ -45,3 +45,9 @@ loadButton.addEventListener("click", function() {
         console.log("Error loading from firestore: " + error);
     });
 });
+
+// automatically updates the sandwich data whenever it is updated in the db
+docRef.onSnapshot(function(doc){
+    if (doc && doc.exists) {
+        outputHeader.innerText = doc.data().hotdogstatus
+}});
