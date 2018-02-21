@@ -10,10 +10,10 @@ var config = {
 };
 firebase.initializeApp(config);
 
-const outputHeader = document.getElementById('hotdogStatus');
-const inputText    = document.getElementById('newStatus');
-const saveButton   = document.getElementById('saveButton');
+const dbText = document.getElementById('dbText');
 
-var dbRef = firebase.database().ref().child('text');
-dbRef.on('value', snap => outputHeader.innerText = snap.val());
+// gets the reference text from realtime DB
+const dbRef = firebase.database().ref().child('text');
 
+// sets the value fetched from firebase to the header
+dbRef.on('value', snap => dbText.innerText = snap.val());
