@@ -13,8 +13,9 @@ var firestore = firebase.firestore();
 const outputHeader = document.getElementById('hotdogStatus');
 const inputText    = document.getElementById('newStatus');
 const saveButton   = document.getElementById('saveButton');
+const loadButton   = document.getElementById('loadButton');
 
-document.getElementById('saveButton').innerText = "Hot dog status:"
+document.getElementById('dbText').innerText = "Hot dog status:"
 
 // gets the reference document with sandwich data from firestore DB
 
@@ -26,15 +27,21 @@ const docRef = firestore.doc("samples/sandwichdata");
 
 saveButton.addEventListener("click", function() {
     const saveTxt = inputText.value;
-    console.log("You typed " + saveTxt);
+    console.log("You typed " + saveTxt);    
     // set will replace or create the data in firestore and return a promise
-    docRef.set({ 
-        hotdogstatus: saveTxt
-    // callback for when it returns successfully
-    }).then(function() {
+    docRef.set({hotdogstatus: saveTxt}).then(function() {
         console.log("Successfully saved to firestore")
-    // callback for if it returns with errors
     }).catch(function(){
         console.log("Error saving to firestore: " + error);
+    });
+});
+
+loadButton.addEventListener("click", function() {
+    const saveTxt = inputText.value;
+    docRef.get().then(function(doc) {
+        if (doc && doc.exists) {
+            outputHeader.innerText = doc.data().hotdogstatus
+    }}).catch(function(){
+        console.log("Error loading from firestore: " + error);
     });
 });
