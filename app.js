@@ -10,6 +10,10 @@ var config = {
 };
 firebase.initializeApp(config);
 
-var h1 = document.getElementById('hotdogstatus');
+const outputHeader = document.getElementById('hotdogStatus');
+const inputText    = document.getElementById('newStatus');
+const saveButton   = document.getElementById('saveButton');
+
 var dbRef = firebase.database().ref().child('text');
-dbRef.on('value', snap => hotdogstatus.innerText = snap.val());
+dbRef.on('value', snap => outputHeader.innerText = snap.val());
+
