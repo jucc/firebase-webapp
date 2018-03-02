@@ -1,23 +1,27 @@
 <html>
 
 <head>
-    <title> Hot dogs === sandwiches? </title>
+    <title> Add points to a dataset </title>
+    <meta charset="utf-8" />
 </head>
 
 <body>
 
-    <h1 id="dbText"> </h1>
-    <h1 id="hotdogStatus"> </h1>
-    <input type="textfield" id="newStatus"/>
-    <button id="saveButton"> Save </button>
-    <button id="loadButton"> Load </button>
+    <div id="addData">
+        <p id="Add"> </h1>
+        <input type="textfield" id="newPoint"/>
+        <button id="saveButton"> Save </button>
+        <button id="loadButton"> Load </button>
+    </div>
 
-    <!-- <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script> -->
-    <!-- <script src="./firebase.js"></script> -->
+    <div id="showData">        
+    </div>
 
     <script src="https://www.gstatic.com/firebasejs/4.5.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.5.1/firebase-firestore.js"></script>    
-    <script src="./firestore.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="./app.js"></script>
 </body>
 
 </html>

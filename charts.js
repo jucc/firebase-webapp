@@ -1,6 +1,6 @@
 const dataset = [10, 20, 30, 25, 15];
 
-d3.select(".title").style("color", "grey"); 
+d3.select(".title").style("color", "grey")
 
 d3.select("#tableContainer")
   .selectAll("p")
@@ -15,12 +15,12 @@ const width = 300;
 const height = 300;
 const cl_turq = "rgba(22, 187, 151, 0.87)"
 
-var svg = d3.select("#svgcontainer")
+var svg = d3.select("#svgContainer")
      .append("svg")
      .attr("width", width)
-     .attr("height", height);
+     .attr("height", height)
 
-var g = svg.append("g");
+var g = svg.append("g")
 
 g.append("line")
    .attr("x1", 100)
@@ -41,8 +41,8 @@ g.append("ellipse")
 g.attr("transform", "rotate(-15) translate(-80, 90)")
 
 
-tester = document.getElementById('chartContainer');
+var tester = document.getElementById("chartContainer")
 Plotly.plot( tester, [{
 x: [1, 2, 3, 4, 5],
 y: [1, 2, 4, 8, 16] }], {
-margin: { t: 0 } } );
+margin: { t: 2 } } )
