@@ -18,6 +18,7 @@ const divData      = document.getElementById('showData');
 const values = firestore.collection("samples/dataset/values");
 
 saveButton.addEventListener("click", function() {
+
     const saveTxt = inputText.value;
     console.log("You typed " + saveTxt);
     values.add({value: saveTxt})
@@ -28,6 +29,7 @@ saveButton.addEventListener("click", function() {
         console.error("Error adding document: ", error);
     });
 });
+
 
 loadButton.addEventListener("click", function() {
 
